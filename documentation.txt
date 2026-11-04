@@ -1,0 +1,60 @@
+TITLE        :Steganography System
+NAME         :ARATHI V
+Date.        :08/04/2026
+ROLL NUMBER  :25031_048
+
+Description:
+The program first checks the input and opens the image and secret file, then it verifies whether the image has enough space to store the data.
+After that, the BMP header is copied without making any changes, and the encoding process begins using the LSB method. A magic string is stored
+to identify the hidden data, followed by storing the file extension and file size. Then the actual secret data is hidden inside the image by 
+modifying the least significant bits. The remaining part of the image is copied to complete the stego image. During decoding, the program 
+reads the hidden data from the image bits and first checks the magic string to confirm the presence of secret data. It then extracts the file
+extension and file size. After that, it reconstructs the original data from the bits. Finally, the recovered data is written into a new file and the original secret file is obtained.scription:
+
+Sample i/p:
+Encoding:
+./a.out -e beautiful.bmp secret.txt stego.bmp
+
+Decoding:
+./a.out -d stego.bmp output.txt
+
+Sample o/p:
+Encoding:
+## Encoding Procedure Started ##
+INFO: Checking for secret.txt size
+INFO: Done. Not Empty
+INFO: Checking for SkeletonCode/beautiful.bmp capacity to handle secret.txt
+INFO: Done. Found Ok
+width = 1024
+height = 768
+INFO: Copying Image Header
+INFO: Done
+INFO: Encoding Magic String Signature
+INFO: Done
+INFO: Encoding Secret.txt File Extension
+INFO: Done
+INFO: Encoding Secret.txt File Size
+INFO: Done
+INFO: Encoding Secret.txt File Data
+INFO: Done
+INFO: Copying Left Over Data
+INFO: Done
+## Encoding Done Successfully ##
+Source Image: beautiful.bmp
+Secret File: secret.txt
+Output Image: stego.bmp
+
+Decoding:
+INFO: ##Decoding Procedure Started ##
+INFO: Opened stego.bmp
+INFO: Decoding Magic String Signature
+INFO: Done
+INFO: Decoding Output File Extension
+INFO: Done
+INFO: Decoding File Size
+INFO: Done
+INFO: Decoding File Data
+INFO: Done
+## Decoding Done Successfully ##
+Stego Image: stego.bmp
+Output File: output
