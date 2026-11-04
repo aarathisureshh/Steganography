@@ -10,7 +10,7 @@ A C program that hides a secret file inside a BMP image using the least signific
 ## Build
 
 ```bash
-gcc -Wall -Wextra -o steganography encode.c decode.c test_encode.c
+gcc -o steganography encode.c decode.c test_encode.c
 ```
 
 ## Usage
